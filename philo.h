@@ -6,7 +6,7 @@
 /*   By: nranna <nranna@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:43:04 by nranna            #+#    #+#             */
-/*   Updated: 2024/12/17 00:01:05 by nranna           ###   ########.fr       */
+/*   Updated: 2024/12/17 12:50:06 by nranna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef enum e_op
 typedef struct s_fork
 {
 	int					id;
+	int					destroyed;
 	pthread_mutex_t		fork_mtx;
 }						t_fork;
 

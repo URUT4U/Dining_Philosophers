@@ -6,7 +6,7 @@
 /*   By: nranna <nranna@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:48:50 by nranna            #+#    #+#             */
-/*   Updated: 2024/12/17 00:50:44 by nranna           ###   ########.fr       */
+/*   Updated: 2024/12/17 12:46:41 by nranna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	*dinner(void *data)
 		if (get_bool(&phil->philo_mtx, &phil->full) == TRUE)
 			break ;
 		i_eat(phil);
-		smart_usleep(phil->table->time_sleep, phil->table);
 		write_status(SLEEP, phil);
+		smart_usleep(phil->table->time_sleep, phil->table);
 		i_think(phil, FALSE);
 	}
 	return (NULL);
@@ -75,11 +75,11 @@ static void	i_eat(t_philo *phil)
 		write_status(TAKE_FIRST_FORK, phil);
 		mutex_handler(&phil->second_fork->fork_mtx, LOCK);
 		write_status(TAKE_SECOND_FORK, phil);
-		set_long(&phil->philo_mtx, &phil->last_eaten, gettime(MILSEC));
 		i = phil->meals_counter + 1;
 		set_long(&phil->philo_mtx, &phil->meals_counter, i);
 		write_status(EAT, phil);
 		smart_usleep(phil->table->time_eat, phil->table);
+		set_long(&phil->philo_mtx, &phil->last_eaten, gettime(MILSEC));
 		if (phil->table->max_meals > 0
 			&& phil->meals_counter == phil->table->max_meals)
 			set_bool(&phil->philo_mtx, &phil->full, TRUE);

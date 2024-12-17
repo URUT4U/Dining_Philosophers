@@ -6,7 +6,7 @@
 /*   By: nranna <nranna@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:35:00 by nranna            #+#    #+#             */
-/*   Updated: 2024/12/16 20:21:56 by nranna           ###   ########.fr       */
+/*   Updated: 2024/12/17 13:00:37 by nranna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	data_init(t_table *table)
 	{
 		mutex_handler(&table->fork[i].fork_mtx, INIT);
 		table->fork[i].id = i;
+		table->fork->destroyed = FALSE;
 		i++;
 	}
 	create_philos(table);
